@@ -1,0 +1,1925 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/Poligonos75al78_1.js"></script>
+        <script src="data/Poligonos6364656674_2.js"></script>
+        <script src="data/Poligonos6162677273_3.js"></script>
+        <script src="data/Poligonos6068697071_4.js"></script>
+        <script src="data/Poligonos55al59_5.js"></script>
+        <script src="data/Poligono54_6.js"></script>
+        <script src="data/Poligonos51al53_7.js"></script>
+        <script src="data/Poligonos48al50_8.js"></script>
+        <script src="data/Poligonos43al47_9.js"></script>
+        <script src="data/Poligonos3233363739_10.js"></script>
+        <script src="data/Poligonos3138404142_11.js"></script>
+        <script src="data/Poligono26al30_12.js"></script>
+        <script src="data/Poligonos2324253435_13.js"></script>
+        <script src="data/Poligonos1922_14.js"></script>
+        <script src="data/Poligonos1617182021_15.js"></script>
+        <script src="data/Poligonos11al15_16.js"></script>
+        <script src="data/Poligonos6al10_17.js"></script>
+        <script src="data/Poligonos1al5_18.js"></script>
+        <script src="data/Pivotes_19.js"></script>
+        <script src="data/SectorCruzdelSur_20.js"></script>
+        <script src="data/SectorElCoiron_21.js"></script>
+        <script src="data/CasasyGalpones_22.js"></script>
+        <script src="data/CauceAluvial_23.js"></script>
+        <script src="data/Represas_24.js"></script>
+        <script src="data/PoligonodelCampo_25.js"></script>
+        <script src="data/CentrodePivotes_26.js"></script>
+        <script src="data/PozosconPermisosPendientes_27.js"></script>
+        <script src="data/Pozos_existentes_28.js"></script>
+        <script src="data/TuberaExistente_29.js"></script>
+        <script src="data/LineasdeEneriaLAT_30.js"></script>
+        <script src="data/LineasdeEnergiaMTexistentes_31.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-34.10324536502798,-69.02296325613679],[-33.982980936811025,-68.73943578659028]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatellite_0');
+        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        function pop_Poligonos75al78_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos75al78_1_0() {
+            return {
+                pane: 'pane_Poligonos75al78_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(141,90,153,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos75al78_1');
+        map.getPane('pane_Poligonos75al78_1').style.zIndex = 401;
+        map.getPane('pane_Poligonos75al78_1').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos75al78_1 = new L.geoJson(json_Poligonos75al78_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos75al78_1',
+            layerName: 'layer_Poligonos75al78_1',
+            pane: 'pane_Poligonos75al78_1',
+            onEachFeature: pop_Poligonos75al78_1,
+            style: style_Poligonos75al78_1_0,
+        });
+        bounds_group.addLayer(layer_Poligonos75al78_1);
+        map.addLayer(layer_Poligonos75al78_1);
+        function pop_Poligonos6364656674_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos6364656674_2_0() {
+            return {
+                pane: 'pane_Poligonos6364656674_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,166,178,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos6364656674_2');
+        map.getPane('pane_Poligonos6364656674_2').style.zIndex = 402;
+        map.getPane('pane_Poligonos6364656674_2').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos6364656674_2 = new L.geoJson(json_Poligonos6364656674_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos6364656674_2',
+            layerName: 'layer_Poligonos6364656674_2',
+            pane: 'pane_Poligonos6364656674_2',
+            onEachFeature: pop_Poligonos6364656674_2,
+            style: style_Poligonos6364656674_2_0,
+        });
+        bounds_group.addLayer(layer_Poligonos6364656674_2);
+        map.addLayer(layer_Poligonos6364656674_2);
+        function pop_Poligonos6162677273_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos6162677273_3_0() {
+            return {
+                pane: 'pane_Poligonos6162677273_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos6162677273_3');
+        map.getPane('pane_Poligonos6162677273_3').style.zIndex = 403;
+        map.getPane('pane_Poligonos6162677273_3').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos6162677273_3 = new L.geoJson(json_Poligonos6162677273_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos6162677273_3',
+            layerName: 'layer_Poligonos6162677273_3',
+            pane: 'pane_Poligonos6162677273_3',
+            onEachFeature: pop_Poligonos6162677273_3,
+            style: style_Poligonos6162677273_3_0,
+        });
+        bounds_group.addLayer(layer_Poligonos6162677273_3);
+        map.addLayer(layer_Poligonos6162677273_3);
+        function pop_Poligonos6068697071_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos6068697071_4_0() {
+            return {
+                pane: 'pane_Poligonos6068697071_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos6068697071_4');
+        map.getPane('pane_Poligonos6068697071_4').style.zIndex = 404;
+        map.getPane('pane_Poligonos6068697071_4').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos6068697071_4 = new L.geoJson(json_Poligonos6068697071_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos6068697071_4',
+            layerName: 'layer_Poligonos6068697071_4',
+            pane: 'pane_Poligonos6068697071_4',
+            onEachFeature: pop_Poligonos6068697071_4,
+            style: style_Poligonos6068697071_4_0,
+        });
+        bounds_group.addLayer(layer_Poligonos6068697071_4);
+        map.addLayer(layer_Poligonos6068697071_4);
+        function pop_Poligonos55al59_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos55al59_5_0() {
+            return {
+                pane: 'pane_Poligonos55al59_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(164,113,88,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos55al59_5');
+        map.getPane('pane_Poligonos55al59_5').style.zIndex = 405;
+        map.getPane('pane_Poligonos55al59_5').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos55al59_5 = new L.geoJson(json_Poligonos55al59_5, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos55al59_5',
+            layerName: 'layer_Poligonos55al59_5',
+            pane: 'pane_Poligonos55al59_5',
+            onEachFeature: pop_Poligonos55al59_5,
+            style: style_Poligonos55al59_5_0,
+        });
+        bounds_group.addLayer(layer_Poligonos55al59_5);
+        map.addLayer(layer_Poligonos55al59_5);
+        function pop_Poligono54_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligono54_6_0() {
+            return {
+                pane: 'pane_Poligono54_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(133,182,111,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligono54_6');
+        map.getPane('pane_Poligono54_6').style.zIndex = 406;
+        map.getPane('pane_Poligono54_6').style['mix-blend-mode'] = 'normal';
+        var layer_Poligono54_6 = new L.geoJson(json_Poligono54_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligono54_6',
+            layerName: 'layer_Poligono54_6',
+            pane: 'pane_Poligono54_6',
+            onEachFeature: pop_Poligono54_6,
+            style: style_Poligono54_6_0,
+        });
+        bounds_group.addLayer(layer_Poligono54_6);
+        map.addLayer(layer_Poligono54_6);
+        function pop_Poligonos51al53_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos51al53_7_0() {
+            return {
+                pane: 'pane_Poligonos51al53_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,139,143,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos51al53_7');
+        map.getPane('pane_Poligonos51al53_7').style.zIndex = 407;
+        map.getPane('pane_Poligonos51al53_7').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos51al53_7 = new L.geoJson(json_Poligonos51al53_7, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos51al53_7',
+            layerName: 'layer_Poligonos51al53_7',
+            pane: 'pane_Poligonos51al53_7',
+            onEachFeature: pop_Poligonos51al53_7,
+            style: style_Poligonos51al53_7_0,
+        });
+        bounds_group.addLayer(layer_Poligonos51al53_7);
+        map.addLayer(layer_Poligonos51al53_7);
+        function pop_Poligonos48al50_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos48al50_8_0() {
+            return {
+                pane: 'pane_Poligonos48al50_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,82,45,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos48al50_8');
+        map.getPane('pane_Poligonos48al50_8').style.zIndex = 408;
+        map.getPane('pane_Poligonos48al50_8').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos48al50_8 = new L.geoJson(json_Poligonos48al50_8, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos48al50_8',
+            layerName: 'layer_Poligonos48al50_8',
+            pane: 'pane_Poligonos48al50_8',
+            onEachFeature: pop_Poligonos48al50_8,
+            style: style_Poligonos48al50_8_0,
+        });
+        bounds_group.addLayer(layer_Poligonos48al50_8);
+        map.addLayer(layer_Poligonos48al50_8);
+        function pop_Poligonos43al47_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos43al47_9_0() {
+            return {
+                pane: 'pane_Poligonos43al47_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,178,151,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos43al47_9');
+        map.getPane('pane_Poligonos43al47_9').style.zIndex = 409;
+        map.getPane('pane_Poligonos43al47_9').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos43al47_9 = new L.geoJson(json_Poligonos43al47_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos43al47_9',
+            layerName: 'layer_Poligonos43al47_9',
+            pane: 'pane_Poligonos43al47_9',
+            onEachFeature: pop_Poligonos43al47_9,
+            style: style_Poligonos43al47_9_0,
+        });
+        bounds_group.addLayer(layer_Poligonos43al47_9);
+        map.addLayer(layer_Poligonos43al47_9);
+        function pop_Poligonos3233363739_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos3233363739_10_0() {
+            return {
+                pane: 'pane_Poligonos3233363739_10',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,60,57,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos3233363739_10');
+        map.getPane('pane_Poligonos3233363739_10').style.zIndex = 410;
+        map.getPane('pane_Poligonos3233363739_10').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos3233363739_10 = new L.geoJson(json_Poligonos3233363739_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos3233363739_10',
+            layerName: 'layer_Poligonos3233363739_10',
+            pane: 'pane_Poligonos3233363739_10',
+            onEachFeature: pop_Poligonos3233363739_10,
+            style: style_Poligonos3233363739_10_0,
+        });
+        bounds_group.addLayer(layer_Poligonos3233363739_10);
+        map.addLayer(layer_Poligonos3233363739_10);
+        function pop_Poligonos3138404142_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos3138404142_11_0() {
+            return {
+                pane: 'pane_Poligonos3138404142_11',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,182,54,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos3138404142_11');
+        map.getPane('pane_Poligonos3138404142_11').style.zIndex = 411;
+        map.getPane('pane_Poligonos3138404142_11').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos3138404142_11 = new L.geoJson(json_Poligonos3138404142_11, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos3138404142_11',
+            layerName: 'layer_Poligonos3138404142_11',
+            pane: 'pane_Poligonos3138404142_11',
+            onEachFeature: pop_Poligonos3138404142_11,
+            style: style_Poligonos3138404142_11_0,
+        });
+        bounds_group.addLayer(layer_Poligonos3138404142_11);
+        map.addLayer(layer_Poligonos3138404142_11);
+        function pop_Poligono26al30_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligono26al30_12_0() {
+            return {
+                pane: 'pane_Poligono26al30_12',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligono26al30_12');
+        map.getPane('pane_Poligono26al30_12').style.zIndex = 412;
+        map.getPane('pane_Poligono26al30_12').style['mix-blend-mode'] = 'normal';
+        var layer_Poligono26al30_12 = new L.geoJson(json_Poligono26al30_12, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligono26al30_12',
+            layerName: 'layer_Poligono26al30_12',
+            pane: 'pane_Poligono26al30_12',
+            onEachFeature: pop_Poligono26al30_12,
+            style: style_Poligono26al30_12_0,
+        });
+        bounds_group.addLayer(layer_Poligono26al30_12);
+        map.addLayer(layer_Poligono26al30_12);
+        function pop_Poligonos2324253435_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos2324253435_13_0() {
+            return {
+                pane: 'pane_Poligonos2324253435_13',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,207,80,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos2324253435_13');
+        map.getPane('pane_Poligonos2324253435_13').style.zIndex = 413;
+        map.getPane('pane_Poligonos2324253435_13').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos2324253435_13 = new L.geoJson(json_Poligonos2324253435_13, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos2324253435_13',
+            layerName: 'layer_Poligonos2324253435_13',
+            pane: 'pane_Poligonos2324253435_13',
+            onEachFeature: pop_Poligonos2324253435_13,
+            style: style_Poligonos2324253435_13_0,
+        });
+        bounds_group.addLayer(layer_Poligonos2324253435_13);
+        map.addLayer(layer_Poligonos2324253435_13);
+        function pop_Poligonos1922_14(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos1922_14_0() {
+            return {
+                pane: 'pane_Poligonos1922_14',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,125,183,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos1922_14');
+        map.getPane('pane_Poligonos1922_14').style.zIndex = 414;
+        map.getPane('pane_Poligonos1922_14').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos1922_14 = new L.geoJson(json_Poligonos1922_14, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos1922_14',
+            layerName: 'layer_Poligonos1922_14',
+            pane: 'pane_Poligonos1922_14',
+            onEachFeature: pop_Poligonos1922_14,
+            style: style_Poligonos1922_14_0,
+        });
+        bounds_group.addLayer(layer_Poligonos1922_14);
+        map.addLayer(layer_Poligonos1922_14);
+        function pop_Poligonos1617182021_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos1617182021_15_0() {
+            return {
+                pane: 'pane_Poligonos1617182021_15',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,182,54,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos1617182021_15');
+        map.getPane('pane_Poligonos1617182021_15').style.zIndex = 415;
+        map.getPane('pane_Poligonos1617182021_15').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos1617182021_15 = new L.geoJson(json_Poligonos1617182021_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos1617182021_15',
+            layerName: 'layer_Poligonos1617182021_15',
+            pane: 'pane_Poligonos1617182021_15',
+            onEachFeature: pop_Poligonos1617182021_15,
+            style: style_Poligonos1617182021_15_0,
+        });
+        bounds_group.addLayer(layer_Poligonos1617182021_15);
+        map.addLayer(layer_Poligonos1617182021_15);
+        function pop_Poligonos11al15_16(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos11al15_16_0() {
+            return {
+                pane: 'pane_Poligonos11al15_16',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos11al15_16');
+        map.getPane('pane_Poligonos11al15_16').style.zIndex = 416;
+        map.getPane('pane_Poligonos11al15_16').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos11al15_16 = new L.geoJson(json_Poligonos11al15_16, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos11al15_16',
+            layerName: 'layer_Poligonos11al15_16',
+            pane: 'pane_Poligonos11al15_16',
+            onEachFeature: pop_Poligonos11al15_16,
+            style: style_Poligonos11al15_16_0,
+        });
+        bounds_group.addLayer(layer_Poligonos11al15_16);
+        map.addLayer(layer_Poligonos11al15_16);
+        function pop_Poligonos6al10_17(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos6al10_17_0() {
+            return {
+                pane: 'pane_Poligonos6al10_17',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,207,80,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos6al10_17');
+        map.getPane('pane_Poligonos6al10_17').style.zIndex = 417;
+        map.getPane('pane_Poligonos6al10_17').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos6al10_17 = new L.geoJson(json_Poligonos6al10_17, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos6al10_17',
+            layerName: 'layer_Poligonos6al10_17',
+            pane: 'pane_Poligonos6al10_17',
+            onEachFeature: pop_Poligonos6al10_17,
+            style: style_Poligonos6al10_17_0,
+        });
+        bounds_group.addLayer(layer_Poligonos6al10_17);
+        map.addLayer(layer_Poligonos6al10_17);
+        function pop_Poligonos1al5_18(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">layer</th>\
+                        <td>' + (feature.properties['layer'] !== null ? autolinker.link(feature.properties['layer'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Num Pivote</th>\
+                        <td>' + (feature.properties['Num Pivote'] !== null ? autolinker.link(feature.properties['Num Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Superficie</th>\
+                        <td>' + (feature.properties['Superficie'] !== null ? autolinker.link(feature.properties['Superficie'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Grupo</th>\
+                        <td>' + (feature.properties['Grupo'] !== null ? autolinker.link(feature.properties['Grupo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Poligonos1al5_18_0() {
+            return {
+                pane: 'pane_Poligonos1al5_18',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,125,183,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Poligonos1al5_18');
+        map.getPane('pane_Poligonos1al5_18').style.zIndex = 418;
+        map.getPane('pane_Poligonos1al5_18').style['mix-blend-mode'] = 'normal';
+        var layer_Poligonos1al5_18 = new L.geoJson(json_Poligonos1al5_18, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Poligonos1al5_18',
+            layerName: 'layer_Poligonos1al5_18',
+            pane: 'pane_Poligonos1al5_18',
+            onEachFeature: pop_Poligonos1al5_18,
+            style: style_Poligonos1al5_18_0,
+        });
+        bounds_group.addLayer(layer_Poligonos1al5_18);
+        map.addLayer(layer_Poligonos1al5_18);
+        function pop_Pivotes_19(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? autolinker.link(feature.properties['descriptio'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? autolinker.link(feature.properties['timestamp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? autolinker.link(feature.properties['begin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? autolinker.link(feature.properties['end'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMo'] !== null ? autolinker.link(feature.properties['altitudeMo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? autolinker.link(feature.properties['tessellate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? autolinker.link(feature.properties['extrude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? autolinker.link(feature.properties['visibility'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? autolinker.link(feature.properties['drawOrder'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? autolinker.link(feature.properties['icon'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Pivotes_19_0() {
+            return {
+                pane: 'pane_Pivotes_19',
+                opacity: 1,
+                color: 'rgba(255,22,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Pivotes_19');
+        map.getPane('pane_Pivotes_19').style.zIndex = 419;
+        map.getPane('pane_Pivotes_19').style['mix-blend-mode'] = 'normal';
+        var layer_Pivotes_19 = new L.geoJson(json_Pivotes_19, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Pivotes_19',
+            layerName: 'layer_Pivotes_19',
+            pane: 'pane_Pivotes_19',
+            onEachFeature: pop_Pivotes_19,
+            style: style_Pivotes_19_0,
+        });
+        bounds_group.addLayer(layer_Pivotes_19);
+        map.addLayer(layer_Pivotes_19);
+        function pop_SectorCruzdelSur_20(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SectorCruzdelSur_20_0() {
+            return {
+                pane: 'pane_SectorCruzdelSur_20',
+                opacity: 1,
+                color: 'rgba(255,213,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_SectorCruzdelSur_20');
+        map.getPane('pane_SectorCruzdelSur_20').style.zIndex = 420;
+        map.getPane('pane_SectorCruzdelSur_20').style['mix-blend-mode'] = 'normal';
+        var layer_SectorCruzdelSur_20 = new L.geoJson(json_SectorCruzdelSur_20, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_SectorCruzdelSur_20',
+            layerName: 'layer_SectorCruzdelSur_20',
+            pane: 'pane_SectorCruzdelSur_20',
+            onEachFeature: pop_SectorCruzdelSur_20,
+            style: style_SectorCruzdelSur_20_0,
+        });
+        bounds_group.addLayer(layer_SectorCruzdelSur_20);
+        map.addLayer(layer_SectorCruzdelSur_20);
+        function pop_SectorElCoiron_21(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_SectorElCoiron_21_0() {
+            return {
+                pane: 'pane_SectorElCoiron_21',
+                opacity: 1,
+                color: 'rgba(255,202,11,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_SectorElCoiron_21');
+        map.getPane('pane_SectorElCoiron_21').style.zIndex = 421;
+        map.getPane('pane_SectorElCoiron_21').style['mix-blend-mode'] = 'normal';
+        var layer_SectorElCoiron_21 = new L.geoJson(json_SectorElCoiron_21, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_SectorElCoiron_21',
+            layerName: 'layer_SectorElCoiron_21',
+            pane: 'pane_SectorElCoiron_21',
+            onEachFeature: pop_SectorElCoiron_21,
+            style: style_SectorElCoiron_21_0,
+        });
+        bounds_group.addLayer(layer_SectorElCoiron_21);
+        map.addLayer(layer_SectorElCoiron_21);
+        function pop_CasasyGalpones_22(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CasasyGalpones_22_0() {
+            return {
+                pane: 'pane_CasasyGalpones_22',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(128,19,236,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_CasasyGalpones_22');
+        map.getPane('pane_CasasyGalpones_22').style.zIndex = 422;
+        map.getPane('pane_CasasyGalpones_22').style['mix-blend-mode'] = 'normal';
+        var layer_CasasyGalpones_22 = new L.geoJson(json_CasasyGalpones_22, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_CasasyGalpones_22',
+            layerName: 'layer_CasasyGalpones_22',
+            pane: 'pane_CasasyGalpones_22',
+            onEachFeature: pop_CasasyGalpones_22,
+            style: style_CasasyGalpones_22_0,
+        });
+        bounds_group.addLayer(layer_CasasyGalpones_22);
+        map.addLayer(layer_CasasyGalpones_22);
+        function pop_CauceAluvial_23(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CauceAluvial_23_0() {
+            return {
+                pane: 'pane_CauceAluvial_23',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(1,5,255,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_CauceAluvial_23');
+        map.getPane('pane_CauceAluvial_23').style.zIndex = 423;
+        map.getPane('pane_CauceAluvial_23').style['mix-blend-mode'] = 'normal';
+        var layer_CauceAluvial_23 = new L.geoJson(json_CauceAluvial_23, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_CauceAluvial_23',
+            layerName: 'layer_CauceAluvial_23',
+            pane: 'pane_CauceAluvial_23',
+            onEachFeature: pop_CauceAluvial_23,
+            style: style_CauceAluvial_23_0,
+        });
+        bounds_group.addLayer(layer_CauceAluvial_23);
+        map.addLayer(layer_CauceAluvial_23);
+        function pop_Represas_24(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">id</th>\
+                        <td>' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Represa</th>\
+                        <td>' + (feature.properties['Represa'] !== null ? autolinker.link(feature.properties['Represa'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Represas_24_0() {
+            return {
+                pane: 'pane_Represas_24',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,243,1,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Represas_24');
+        map.getPane('pane_Represas_24').style.zIndex = 424;
+        map.getPane('pane_Represas_24').style['mix-blend-mode'] = 'normal';
+        var layer_Represas_24 = new L.geoJson(json_Represas_24, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Represas_24',
+            layerName: 'layer_Represas_24',
+            pane: 'pane_Represas_24',
+            onEachFeature: pop_Represas_24,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Represas_24_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Represas_24);
+        map.addLayer(layer_Represas_24);
+        function pop_PoligonodelCampo_25(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OID_'] !== null ? autolinker.link(feature.properties['OID_'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FolderPath'] !== null ? autolinker.link(feature.properties['FolderPath'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SymbolID'] !== null ? autolinker.link(feature.properties['SymbolID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AltMode'] !== null ? autolinker.link(feature.properties['AltMode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Base'] !== null ? autolinker.link(feature.properties['Base'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Clamped'] !== null ? autolinker.link(feature.properties['Clamped'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Extruded'] !== null ? autolinker.link(feature.properties['Extruded'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Snippet'] !== null ? autolinker.link(feature.properties['Snippet'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PopupInfo'] !== null ? autolinker.link(feature.properties['PopupInfo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PoligonodelCampo_25_0() {
+            return {
+                pane: 'pane_PoligonodelCampo_25',
+                opacity: 1,
+                color: 'rgba(255,39,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_PoligonodelCampo_25');
+        map.getPane('pane_PoligonodelCampo_25').style.zIndex = 425;
+        map.getPane('pane_PoligonodelCampo_25').style['mix-blend-mode'] = 'normal';
+        var layer_PoligonodelCampo_25 = new L.geoJson(json_PoligonodelCampo_25, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_PoligonodelCampo_25',
+            layerName: 'layer_PoligonodelCampo_25',
+            pane: 'pane_PoligonodelCampo_25',
+            onEachFeature: pop_PoligonodelCampo_25,
+            style: style_PoligonodelCampo_25_0,
+        });
+        bounds_group.addLayer(layer_PoligonodelCampo_25);
+        map.addLayer(layer_PoligonodelCampo_25);
+        function pop_CentrodePivotes_26(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Pivote'] !== null ? autolinker.link(feature.properties['Pivote'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Pres Piv'] !== null ? autolinker.link(feature.properties['Pres Piv'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_CentrodePivotes_26_0() {
+            return {
+                pane: 'pane_CentrodePivotes_26',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(225,89,137,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_CentrodePivotes_26');
+        map.getPane('pane_CentrodePivotes_26').style.zIndex = 426;
+        map.getPane('pane_CentrodePivotes_26').style['mix-blend-mode'] = 'normal';
+        var layer_CentrodePivotes_26 = new L.geoJson(json_CentrodePivotes_26, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_CentrodePivotes_26',
+            layerName: 'layer_CentrodePivotes_26',
+            pane: 'pane_CentrodePivotes_26',
+            onEachFeature: pop_CentrodePivotes_26,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_CentrodePivotes_26_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CentrodePivotes_26);
+        map.addLayer(layer_CentrodePivotes_26);
+        function pop_PozosconPermisosPendientes_27(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">fid</th>\
+                        <td>' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Nombre</th>\
+                        <td>' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Caudal</th>\
+                        <td>' + (feature.properties['Caudal'] !== null ? autolinker.link(feature.properties['Caudal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_PozosconPermisosPendientes_27_0() {
+            return {
+                pane: 'pane_PozosconPermisosPendientes_27',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,52,1,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_PozosconPermisosPendientes_27');
+        map.getPane('pane_PozosconPermisosPendientes_27').style.zIndex = 427;
+        map.getPane('pane_PozosconPermisosPendientes_27').style['mix-blend-mode'] = 'normal';
+        var layer_PozosconPermisosPendientes_27 = new L.geoJson(json_PozosconPermisosPendientes_27, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_PozosconPermisosPendientes_27',
+            layerName: 'layer_PozosconPermisosPendientes_27',
+            pane: 'pane_PozosconPermisosPendientes_27',
+            onEachFeature: pop_PozosconPermisosPendientes_27,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_PozosconPermisosPendientes_27_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_PozosconPermisosPendientes_27);
+        map.addLayer(layer_PozosconPermisosPendientes_27);
+        function pop_Pozos_existentes_28(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Nombre</th>\
+                        <td>' + (feature.properties['Nombre'] !== null ? autolinker.link(feature.properties['Nombre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (feature.properties['Estado'] !== null ? autolinker.link(feature.properties['Estado'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Caudal</th>\
+                        <td>' + (feature.properties['Caudal'] !== null ? autolinker.link(feature.properties['Caudal'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NE</th>\
+                        <td>' + (feature.properties['NE'] !== null ? autolinker.link(feature.properties['NE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">ND</th>\
+                        <td>' + (feature.properties['ND'] !== null ? autolinker.link(feature.properties['ND'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Pozos_existentes_28_0() {
+            return {
+                pane: 'pane_Pozos_existentes_28',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,123,182,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Pozos_existentes_28');
+        map.getPane('pane_Pozos_existentes_28').style.zIndex = 428;
+        map.getPane('pane_Pozos_existentes_28').style['mix-blend-mode'] = 'normal';
+        var layer_Pozos_existentes_28 = new L.geoJson(json_Pozos_existentes_28, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Pozos_existentes_28',
+            layerName: 'layer_Pozos_existentes_28',
+            pane: 'pane_Pozos_existentes_28',
+            onEachFeature: pop_Pozos_existentes_28,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Pozos_existentes_28_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Pozos_existentes_28);
+        map.addLayer(layer_Pozos_existentes_28);
+        function pop_TuberaExistente_29(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Diam Ext</th>\
+                        <td>' + (feature.properties['Diam Ext'] !== null ? autolinker.link(feature.properties['Diam Ext'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cl</th>\
+                        <td>' + (feature.properties['Cl'] !== null ? autolinker.link(feature.properties['Cl'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Origen</th>\
+                        <td>' + (feature.properties['Origen'] !== null ? autolinker.link(feature.properties['Origen'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Destino</th>\
+                        <td>' + (feature.properties['Destino'] !== null ? autolinker.link(feature.properties['Destino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Línea</th>\
+                        <td>' + (feature.properties['Línea'] !== null ? autolinker.link(feature.properties['Línea'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Longitud</th>\
+                        <td>' + (feature.properties['Longitud'] !== null ? autolinker.link(feature.properties['Longitud'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Etapa</th>\
+                        <td>' + (feature.properties['Etapa'] !== null ? autolinker.link(feature.properties['Etapa'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Esp.</th>\
+                        <td>' + (feature.properties['Esp.'] !== null ? autolinker.link(feature.properties['Esp.'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Cable</th>\
+                        <td>' + (feature.properties['Cable'] !== null ? autolinker.link(feature.properties['Cable'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TuberaExistente_29_0(feature) {
+            switch(String(feature.properties['Etapa'])) {
+                case '2021':
+                    return {
+                pane: 'pane_TuberaExistente_29',
+                opacity: 1,
+                color: 'rgba(0,252,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+                case 'Existente':
+                    return {
+                pane: 'pane_TuberaExistente_29',
+                opacity: 1,
+                color: 'rgba(35,35,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_TuberaExistente_29');
+        map.getPane('pane_TuberaExistente_29').style.zIndex = 429;
+        map.getPane('pane_TuberaExistente_29').style['mix-blend-mode'] = 'normal';
+        var layer_TuberaExistente_29 = new L.geoJson(json_TuberaExistente_29, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TuberaExistente_29',
+            layerName: 'layer_TuberaExistente_29',
+            pane: 'pane_TuberaExistente_29',
+            onEachFeature: pop_TuberaExistente_29,
+            style: style_TuberaExistente_29_0,
+        });
+        bounds_group.addLayer(layer_TuberaExistente_29);
+        map.addLayer(layer_TuberaExistente_29);
+        function pop_LineasdeEneriaLAT_30(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Tramo</th>\
+                        <td>' + (feature.properties['Tramo'] !== null ? autolinker.link(feature.properties['Tramo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tension</th>\
+                        <td>' + (feature.properties['Tension'] !== null ? autolinker.link(feature.properties['Tension'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Linea</th>\
+                        <td>' + (feature.properties['Linea'] !== null ? autolinker.link(feature.properties['Linea'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (feature.properties['Estado'] !== null ? autolinker.link(feature.properties['Estado'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Largo</th>\
+                        <td>' + (feature.properties['Largo'] !== null ? autolinker.link(feature.properties['Largo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Origen</th>\
+                        <td>' + (feature.properties['Origen'] !== null ? autolinker.link(feature.properties['Origen'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Destino</th>\
+                        <td>' + (feature.properties['Destino'] !== null ? autolinker.link(feature.properties['Destino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LineasdeEneriaLAT_30_0() {
+            return {
+                pane: 'pane_LineasdeEneriaLAT_30',
+                opacity: 1,
+                color: 'rgba(255,47,1,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LineasdeEneriaLAT_30');
+        map.getPane('pane_LineasdeEneriaLAT_30').style.zIndex = 430;
+        map.getPane('pane_LineasdeEneriaLAT_30').style['mix-blend-mode'] = 'normal';
+        var layer_LineasdeEneriaLAT_30 = new L.geoJson(json_LineasdeEneriaLAT_30, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LineasdeEneriaLAT_30',
+            layerName: 'layer_LineasdeEneriaLAT_30',
+            pane: 'pane_LineasdeEneriaLAT_30',
+            onEachFeature: pop_LineasdeEneriaLAT_30,
+            style: style_LineasdeEneriaLAT_30_0,
+        });
+        bounds_group.addLayer(layer_LineasdeEneriaLAT_30);
+        map.addLayer(layer_LineasdeEneriaLAT_30);
+        function pop_LineasdeEnergiaMTexistentes_31(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Tension</th>\
+                        <td>' + (feature.properties['Tension'] !== null ? autolinker.link(feature.properties['Tension'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Linea</th>\
+                        <td>' + (feature.properties['Linea'] !== null ? autolinker.link(feature.properties['Linea'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Estado</th>\
+                        <td>' + (feature.properties['Estado'] !== null ? autolinker.link(feature.properties['Estado'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Origen</th>\
+                        <td>' + (feature.properties['Origen'] !== null ? autolinker.link(feature.properties['Origen'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Destino</th>\
+                        <td>' + (feature.properties['Destino'] !== null ? autolinker.link(feature.properties['Destino'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Sección</th>\
+                        <td>' + (feature.properties['Sección'] !== null ? autolinker.link(feature.properties['Sección'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Largo</th>\
+                        <td>' + (feature.properties['Largo'] !== null ? autolinker.link(feature.properties['Largo'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LineasdeEnergiaMTexistentes_31_0() {
+            return {
+                pane: 'pane_LineasdeEnergiaMTexistentes_31',
+                opacity: 1,
+                color: 'rgba(1,255,39,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LineasdeEnergiaMTexistentes_31');
+        map.getPane('pane_LineasdeEnergiaMTexistentes_31').style.zIndex = 431;
+        map.getPane('pane_LineasdeEnergiaMTexistentes_31').style['mix-blend-mode'] = 'normal';
+        var layer_LineasdeEnergiaMTexistentes_31 = new L.geoJson(json_LineasdeEnergiaMTexistentes_31, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LineasdeEnergiaMTexistentes_31',
+            layerName: 'layer_LineasdeEnergiaMTexistentes_31',
+            pane: 'pane_LineasdeEnergiaMTexistentes_31',
+            onEachFeature: pop_LineasdeEnergiaMTexistentes_31,
+            style: style_LineasdeEnergiaMTexistentes_31_0,
+        });
+        bounds_group.addLayer(layer_LineasdeEnergiaMTexistentes_31);
+        map.addLayer(layer_LineasdeEnergiaMTexistentes_31);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/LineasdeEnergiaMTexistentes_31.png" /> Lineas de Energia MT existentes': layer_LineasdeEnergiaMTexistentes_31,'<img src="legend/LineasdeEneriaLAT_30.png" /> Lineas de Eneria LAT': layer_LineasdeEneriaLAT_30,'Tubería Existente<br /><table><tr><td style="text-align: center;"><img src="legend/TuberaExistente_29_Arealizaren20210.png" /></td><td>A realizar en 2021</td></tr><tr><td style="text-align: center;"><img src="legend/TuberaExistente_29_Existente1.png" /></td><td>Existente</td></tr></table>': layer_TuberaExistente_29,'<img src="legend/Pozos_existentes_28.png" /> Pozos_existentes': layer_Pozos_existentes_28,'<img src="legend/PozosconPermisosPendientes_27.png" /> Pozos con Permisos Pendientes': layer_PozosconPermisosPendientes_27,'<img src="legend/CentrodePivotes_26.png" /> Centro de Pivotes': layer_CentrodePivotes_26,'<img src="legend/PoligonodelCampo_25.png" /> Poligono del Campo': layer_PoligonodelCampo_25,'<img src="legend/Represas_24.png" /> Represas': layer_Represas_24,'<img src="legend/CauceAluvial_23.png" /> Cauce Aluvial': layer_CauceAluvial_23,'<img src="legend/CasasyGalpones_22.png" /> Casas y Galpones': layer_CasasyGalpones_22,'<img src="legend/SectorElCoiron_21.png" /> Sector El Coiron': layer_SectorElCoiron_21,'<img src="legend/SectorCruzdelSur_20.png" /> Sector Cruz del Sur': layer_SectorCruzdelSur_20,'<img src="legend/Pivotes_19.png" /> Pivotes': layer_Pivotes_19,'<img src="legend/Poligonos1al5_18.png" /> Poligonos 1 al 5': layer_Poligonos1al5_18,'<img src="legend/Poligonos6al10_17.png" /> Poligonos 6 al 10': layer_Poligonos6al10_17,'<img src="legend/Poligonos11al15_16.png" /> Poligonos 11 al 15': layer_Poligonos11al15_16,'<img src="legend/Poligonos1617182021_15.png" /> Poligonos 16-17-18-20-21': layer_Poligonos1617182021_15,'<img src="legend/Poligonos1922_14.png" /> Poligonos 19-22': layer_Poligonos1922_14,'<img src="legend/Poligonos2324253435_13.png" /> Poligonos 23-24-25-34-35': layer_Poligonos2324253435_13,'<img src="legend/Poligono26al30_12.png" /> Poligono 26 al 30': layer_Poligono26al30_12,'<img src="legend/Poligonos3138404142_11.png" /> Poligonos 31-38-40-41-42': layer_Poligonos3138404142_11,'<img src="legend/Poligonos3233363739_10.png" /> Poligonos 32-33-36-37-39': layer_Poligonos3233363739_10,'<img src="legend/Poligonos43al47_9.png" /> Poligonos 43 al 47': layer_Poligonos43al47_9,'<img src="legend/Poligonos48al50_8.png" /> Poligonos 48 al 50': layer_Poligonos48al50_8,'<img src="legend/Poligonos51al53_7.png" /> Poligonos 51 al 53': layer_Poligonos51al53_7,'<img src="legend/Poligono54_6.png" /> Poligono 54': layer_Poligono54_6,'<img src="legend/Poligonos55al59_5.png" /> Poligonos 55 al 59': layer_Poligonos55al59_5,'<img src="legend/Poligonos6068697071_4.png" /> Poligonos 60-68-69-70-71': layer_Poligonos6068697071_4,'<img src="legend/Poligonos6162677273_3.png" /> Poligonos 61-62-67-72-73': layer_Poligonos6162677273_3,'<img src="legend/Poligonos6364656674_2.png" /> Poligonos 63-64-65-66-74': layer_Poligonos6364656674_2,'<img src="legend/Poligonos75al78_1.png" /> Poligonos 75 al 78': layer_Poligonos75al78_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);L.control.scale({position: 'bottomleft', maxWidth: 100, metric: true, imperial: false, updateWhenIdle: false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_Represas_24.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Represa'] !== null?String('<div style="color: #000000; font-size: 8pt; font-weight: bold; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Represa']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Represas_24'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_Pozos_existentes_28.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nombre'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Nombre']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Pozos_existentes_28'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        var i = 0;
+        layer_LineasdeEneriaLAT_30.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Tension'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Tension']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_LineasdeEneriaLAT_30'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_Represas_24,layer_CentrodePivotes_26,layer_PozosconPermisosPendientes_27,layer_Pozos_existentes_28,layer_TuberaExistente_29,layer_LineasdeEneriaLAT_30,layer_LineasdeEnergiaMTexistentes_31]);
+        map.on("zoomend", function(){
+            resetLabels([layer_Represas_24,layer_CentrodePivotes_26,layer_PozosconPermisosPendientes_27,layer_Pozos_existentes_28,layer_TuberaExistente_29,layer_LineasdeEneriaLAT_30,layer_LineasdeEnergiaMTexistentes_31]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_Represas_24,layer_CentrodePivotes_26,layer_PozosconPermisosPendientes_27,layer_Pozos_existentes_28,layer_TuberaExistente_29,layer_LineasdeEneriaLAT_30,layer_LineasdeEnergiaMTexistentes_31]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_Represas_24,layer_CentrodePivotes_26,layer_PozosconPermisosPendientes_27,layer_Pozos_existentes_28,layer_TuberaExistente_29,layer_LineasdeEneriaLAT_30,layer_LineasdeEnergiaMTexistentes_31]);
+        });
+        </script>
+    </body>
+</html>
